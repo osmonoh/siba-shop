@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
+import "./style/App.scss";
+
+import Home from "./components/Home";
+import Products from "./components/Products";
+import ProductDetails from "./components/ProductDetails";
+
+import { Container } from "@mui/material";
+import Cart from "./components/Cart";
+import Navbar from "./components/Navbar";
+import { ContactlessOutlined } from "@mui/icons-material";
+
+import data from "./data";
+
+const App = () => {
+  // const [data, setData] = useState([]);
+
+  fetch("https://5m6exoj3o7.execute-api.eu-west-1.amazonaws.com/prod/items")
+    .then((res) => res.json())
+    .then((data) => console.log(data));
+
+  // useEffect(() => {
+  //   fetch("https://5m6exoj3o7.execute-api.eu-west-1.amazonaws.com/prod/items")
+  //     .then((res) => res.json())
+  //     .then((data) => setData(data));
+  // }, []);
+
+  console.log(data);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <div>
+          <pre>{JSON.stringify(data, null, 2)}</pre>
+        </div> */}
+      <BrowserRouter>
+        <Navbar />
+        {/* <Cart /> */}
+        <Container maxWidth="lg">
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/category/:id" element={<Products />} />
+            <Route path="/collection/:id" element={<Products />} />
+            <Route path="/item/:id" element={<ProductDetails />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </Container>
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
