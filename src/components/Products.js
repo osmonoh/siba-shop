@@ -140,7 +140,7 @@ const Products = () => {
   // console.log(tagsFilter);
 
   return (
-    <Box>
+    <Box className="products">
       <Grid container spacing={4}>
         {renderCards()}
       </Grid>
