@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
+import { MyContext } from "../context/MyContext";
 
 import Grid from "@mui/material/Grid";
-import { MyContext } from "../context/MyContext";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 
 const ProductsFilterBtn = ({ tag }) => {
   const [tagOn, setTagOn] = useState(false);
@@ -26,6 +28,13 @@ const ProductsFilterBtn = ({ tag }) => {
   console.log(tagsFilter);
 
   return (
+    // <Button
+    //   variant={tagOn ? "contained" : "outlined"}
+    //   onClick={onClickFilterBtn}
+    // >
+    //   {tag}
+    // </Button>
+
     <Grid
       item
       xs={1}
@@ -38,3 +47,16 @@ const ProductsFilterBtn = ({ tag }) => {
 };
 
 export default ProductsFilterBtn;
+
+// import Stack from '@mui/material/Stack';
+// import Button from '@mui/material/Button';
+
+// export default function BasicButtons() {
+//   return (
+//     <Stack spacing={2} direction="row">
+//       <Button variant="text">Text</Button>
+//       <Button variant="contained">Contained</Button>
+//       <Button variant="outlined">Outlined</Button>
+//     </Stack>
+//   );
+// }

@@ -3,7 +3,9 @@ import mova from "../api/mova";
 import { MyContext } from "../context/MyContext";
 
 import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
 import { Box } from "@mui/system";
+
 import ProductsFilterBtn from "./ProductsFilterBtn";
 import ProductsCard from "./ProductsCard";
 
@@ -141,9 +143,13 @@ const Products = () => {
 
   return (
     <Box className="products">
+      {/* <Stack container spacing={1} direction="row" margin="0 0 30px 0">
+        {renderButtons()}
+      </Stack> */}
       <Grid container spacing={4} margin="0 0 30px 0">
         {renderButtons()}
       </Grid>
+
       <Grid container spacing={4}>
         {renderCards()}
       </Grid>
