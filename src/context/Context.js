@@ -3,7 +3,9 @@ import { MyContext } from "./MyContext";
 
 const Context = ({ children }) => {
   // const [products, setProducts] = useState([]);
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState(
+    JSON.parse(sessionStorage.getItem("product")) || {}
+  );
   const [productsType, setProductsType] = useState(
     JSON.parse(sessionStorage.getItem("productsType")) || {}
   );

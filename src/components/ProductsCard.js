@@ -16,7 +16,14 @@ const ProductsCard = ({
   const { setProduct } = useContext(MyContext);
 
   return (
-    <Grid item xs={4} onClick={() => setProduct(item)}>
+    <Grid
+      item
+      xs={4}
+      onClick={() => {
+        setProduct(item);
+        sessionStorage.setItem("product", JSON.stringify(item));
+      }}
+    >
       <Link to={"/item/" + itemId}>
         <img src={picture} alt={displayName} style={{ width: "100%" }} />
         <p>{displayName}</p>
