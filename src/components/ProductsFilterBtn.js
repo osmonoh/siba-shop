@@ -29,7 +29,7 @@ const ProductsFilterBtn = ({ tag }) => {
     <Grid
       item
       xs={1}
-      style={{ color: `${tagOn ? "red" : "gold"}` }}
+      style={{ color: `${tagOn ? "hotpink" : "rebeccapurple"}` }}
       onClick={onClickFilterBtn}
     >
       {tag}

@@ -141,11 +141,11 @@ const Products = () => {
 
   return (
     <Box className="products">
-      <Grid container spacing={4}>
-        {renderCards()}
+      <Grid container spacing={4} margin="0 0 30px 0">
+        {renderButtons()}
       </Grid>
       <Grid container spacing={4}>
-        {renderButtons()}
+        {renderCards()}
       </Grid>
     </Box>
   );
