@@ -143,7 +143,7 @@ const Products = () => {
 
   return (
     <Box className="products">
-      {/* <Stack container spacing={1} direction="row" margin="0 0 30px 0">
+      {/* <Stack spacing={1} direction="row" margin="0 0 30px 0">
         {renderButtons()}
       </Stack> */}
       <Grid container spacing={4} margin="0 0 30px 0">
