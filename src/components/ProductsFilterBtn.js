@@ -6,8 +6,10 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
 const ProductsFilterBtn = ({ tag }) => {
-  const [tagOn, setTagOn] = useState(false);
+  // const [tagOn, setTagOn] = useState(false);
+
   const { tagsFilter, setTagsFilter } = useContext(MyContext);
+  const [tagOn, setTagOn] = useState(tagsFilter.includes(tag));
 
   const onClickFilterBtn = (e) => {
     const tag = e.target.innerText;

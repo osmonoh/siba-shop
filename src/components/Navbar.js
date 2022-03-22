@@ -178,17 +178,19 @@ export default function PrimarySearchAppBar() {
           </Link>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Badge badgeContent={4} color="error">
-                {/* <MailIcon /> */}
-                {/* <FavoriteBorderOutlinedIcon /> */}
-                <FavoriteOutlinedIcon />
-              </Badge>
-            </IconButton>
+            <Link to="/favourites">
+              <IconButton
+                size="large"
+                aria-label="show 4 new mails"
+                color="inherit"
+              >
+                <Badge badgeContent={4} color="error">
+                  {/* <MailIcon /> */}
+                  {/* <FavoriteBorderOutlinedIcon /> */}
+                  <FavoriteOutlinedIcon />
+                </Badge>
+              </IconButton>
+            </Link>
             <Link to="/cart">
               <IconButton
                 size="large"

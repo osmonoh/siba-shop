@@ -14,6 +14,7 @@ import Navbar from "./components/Navbar";
 import { ContactlessOutlined } from "@mui/icons-material";
 
 import data from "./data";
+import Favourites from "./components/Favourites";
 
 const App = () => {
   // const [data, setData] = useState([]);
@@ -54,6 +55,7 @@ const App = () => {
             <Route path="/collection/:id" element={<Products />} />
             <Route path="/item/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/favourites" element={<Favourites />} />
           </Routes>
         </Container>
       </BrowserRouter>
