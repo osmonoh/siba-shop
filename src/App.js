@@ -32,7 +32,9 @@ const App = () => {
   console.log(data);
 
   useEffect(() => {
-    localStorage.setItem("inCart", JSON.stringify(inCart));
+    if (!inCart.length && localStorage.getItem("inCart"))
+      localStorage.removeItem("inCart");
+    else localStorage.setItem("inCart", JSON.stringify(inCart));
   }, [inCart]);
 
   // console.log("inCart(APP): ", inCart);
