@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { MyContext } from "./context/MyContext";
 
 import "./style/App.scss";
 
@@ -16,6 +17,7 @@ import data from "./data";
 
 const App = () => {
   // const [data, setData] = useState([]);
+  const { inCart } = useContext(MyContext);
 
   fetch("https://5m6exoj3o7.execute-api.eu-west-1.amazonaws.com/prod/items")
     .then((res) => res.json())
@@ -28,6 +30,12 @@ const App = () => {
   // }, []);
 
   console.log(data);
+
+  useEffect(() => {
+    localStorage.setItem("inCart", JSON.stringify(inCart));
+  }, [inCart]);
+
+  // console.log("inCart(APP): ", inCart);
 
   return (
     <div className="App">

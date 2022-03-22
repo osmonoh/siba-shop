@@ -10,7 +10,9 @@ const Context = ({ children }) => {
     JSON.parse(sessionStorage.getItem("productsType")) || {}
   );
   const [tagsFilter, setTagsFilter] = useState([]);
-  const [inCart, setInCart] = useState([]);
+  const [inCart, setInCart] = useState(
+    JSON.parse(localStorage.getItem("inCart")) || []
+  );
 
   return (
     <MyContext.Provider

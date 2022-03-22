@@ -55,7 +55,6 @@ const ProductDetails = () => {
               })
             );
           }
-
           // setInCart([...inCart, { ...product, size, amount: 1 }])
         }}
       >

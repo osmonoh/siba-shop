@@ -84,8 +84,6 @@ const Cart = () => {
   //     renderCartItems();
   //   }, [inCart]);
 
-  console.log(inCart);
-
   return (
     <div>
       <p>Cart </p>
