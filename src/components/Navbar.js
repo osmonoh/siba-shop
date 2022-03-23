@@ -161,6 +161,7 @@ import { MyContext } from "../context/MyContext";
 
 export default function PrimarySearchAppBar() {
   const { inCart } = useContext(MyContext);
+  const { inFav } = useContext(MyContext);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -184,7 +185,7 @@ export default function PrimarySearchAppBar() {
                 aria-label="show 4 new mails"
                 color="inherit"
               >
-                <Badge badgeContent={4} color="error">
+                <Badge badgeContent={inFav.length} color="error">
                   {/* <MailIcon /> */}
                   {/* <FavoriteBorderOutlinedIcon /> */}
                   <FavoriteOutlinedIcon />

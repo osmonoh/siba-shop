@@ -13,6 +13,9 @@ const Context = ({ children }) => {
   const [inCart, setInCart] = useState(
     JSON.parse(localStorage.getItem("inCart")) || []
   );
+  const [inFav, setInFav] = useState(
+    JSON.parse(localStorage.getItem("inFav")) || []
+  );
 
   return (
     <MyContext.Provider
@@ -27,6 +30,8 @@ const Context = ({ children }) => {
         setTagsFilter,
         inCart,
         setInCart,
+        inFav,
+        setInFav,
       }}
     >
       {children}

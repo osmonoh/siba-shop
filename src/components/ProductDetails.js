@@ -5,6 +5,7 @@ const ProductDetails = () => {
   const { product } = useContext(MyContext);
   // const [toCart, setToCart] = useState({});
   const { inCart, setInCart } = useContext(MyContext);
+  const { inFav, setInFav } = useContext(MyContext);
 
   const [size, setSize] = useState("");
   const [noSize, setNoSize] = useState(false);
@@ -68,29 +69,21 @@ const ProductDetails = () => {
         Add to cart
       </button>
       <button
-      // onClick={() => {
-      //   if (
-      //     !inCart.some(
-      //       (item) => product.itemId === item.itemId && size === item.size
-      //     )
-      //   ) {
-      //     setInCart([...inCart, { ...product, size, amount: 1 }]);
-      //   } else {
-      //     setInCart(
-      //       inCart.map((item) => {
-      //         if (product.itemId === item.itemId && size === item.size) {
-      //           product.amount = item.amount + 1;
-      //           return { ...product, size };
-      //         } else {
-      //           return item;
-      //         }
-      //       })
-      //     );
-      //   }
-      //   // setInCart([...inCart, { ...product, size, amount: 1 }])
-      // }}
+        onClick={() => {
+          if (
+            !inFav.some((item) => {
+              return item.itemId === product.itemId;
+            })
+          )
+            setInFav([...inFav, product]);
+          else setInFav(inFav.filter((item) => item.itemId !== product.itemId));
+        }}
       >
-        Add to favourites
+        {!inFav.some((item) => {
+          return item.itemId === product.itemId;
+        })
+          ? "Add to favourites"
+          : "Remove from favourites"}
       </button>
     </div>
   );
