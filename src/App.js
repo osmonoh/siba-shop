@@ -19,6 +19,7 @@ import Favourites from "./components/Favourites";
 const App = () => {
   // const [data, setData] = useState([]);
   const { inCart } = useContext(MyContext);
+  const { inFav } = useContext(MyContext);
 
   fetch("https://5m6exoj3o7.execute-api.eu-west-1.amazonaws.com/prod/items")
     .then((res) => res.json())
@@ -33,10 +34,14 @@ const App = () => {
   console.log(data);
 
   useEffect(() => {
-    if (!inCart.length && localStorage.getItem("inCart"))
-      localStorage.removeItem("inCart");
+    if (!inCart.length) localStorage.removeItem("inCart");
     else localStorage.setItem("inCart", JSON.stringify(inCart));
   }, [inCart]);
+
+  useEffect(() => {
+    if (!inFav.length) localStorage.removeItem("inFav");
+    else localStorage.setItem("inFav", JSON.stringify(inFav));
+  }, [inFav]);
 
   // console.log("inCart(APP): ", inCart);
 
