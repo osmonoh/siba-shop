@@ -12,6 +12,7 @@ import IconButton from "@mui/material/IconButton";
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Button from "@mui/material/Button";
 
 const Cart = () => {
   const { inCart, setInCart } = useContext(MyContext);
@@ -225,15 +226,21 @@ const Cart = () => {
 
   useEffect(() => {
     setCartTotal(
-      inCart.reduce((acc, item) => (acc += item.amount * item.currentPrice), 0)
+      Math.round(
+        inCart.reduce(
+          (acc, item) => (acc += item.amount * item.currentPrice),
+          0
+        ) * 100
+      ) / 100
     );
   }, [inCart]);
 
   return (
     <div className="cart">
       <Typography variant="h4" component="div" sx={{ marginBottom: "32px" }}>
-        Your shopping bag
+        Shopping bag
       </Typography>
+
       <div className="cart-content">
         <Stack spacing={2} sx={{ flexGrow: 1 }}>
           {inCart.length ? (
@@ -242,11 +249,35 @@ const Cart = () => {
             <p>Your shopping bag is empty</p>
           )}
         </Stack>
-        <Box sx={{ width: "300px", height: "300px", backgroundColor: "gold" }}>
-          <Typography variant="h5" component="div">
-            Total ({inCart.length} items): &euro;{cartTotal}
-          </Typography>
-        </Box>
+
+        <Card
+          sx={{
+            width: "320px",
+            // height: "188px",
+            backgroundColor: "rgba(255, 215, 0, 0.5)",
+            backgroundColor: "pink",
+
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "16px",
+            padding: "39px 32px",
+          }}
+        >
+          <div className="total-card">
+            <Typography variant="h5" component="div">
+              Total ({inCart.length} items): &euro;{cartTotal}
+            </Typography>
+            <Typography variant="caption" component="div">
+              *This total does not include delivery costs
+            </Typography>
+          </div>
+
+          <Button variant="contained" size="large">
+            Proceed to checkout
+          </Button>
+        </Card>
       </div>
     </div>
   );

@@ -155,7 +155,7 @@ const ProductDetails = () => {
           }}
         >
           <div className="card-content-top">
-            <div class="card-text">
+            <div className="card-text">
               <Typography
                 variant="h5"
                 sx={{ marginBottom: "24px" }}

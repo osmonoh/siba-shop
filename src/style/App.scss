@@ -23,7 +23,8 @@ a {
 
 .products,
 .product-details,
-.cart {
+.cart,
+.favourites {
   padding: 60px 0;
 }
 
@@ -54,6 +55,7 @@ a {
 .cart-content {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 24px;
 }
 
