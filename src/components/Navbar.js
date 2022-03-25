@@ -150,7 +150,9 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Badge from "@mui/material/Badge";
 
-import { grey, purple } from "@mui/material/colors";
+import { grey, purple, indigo, blue } from "@mui/material/colors";
+
+import { Container } from "@mui/material";
 
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
@@ -165,16 +167,19 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: purple[300] }}>
+      <AppBar
+        position="static"
+        sx={{ backgroundColor: blue[300], padding: "4px" }}
+      >
+        {/* <Container maxWidth="lg"> */}
         <Toolbar>
           <Link to="/">
             <Typography
-              variant="h6"
-              noWrap
+              variant="h5"
               component="div"
-              sx={{ display: { xs: "none", sm: "block" } }}
+              // sx={{ display: { xs: "none", sm: "block" } }}
             >
-              MOVA
+              SIBA
             </Typography>
           </Link>
           <Box sx={{ flexGrow: 1 }} />
@@ -185,7 +190,7 @@ export default function PrimarySearchAppBar() {
                 aria-label="show 4 new mails"
                 color="inherit"
               >
-                <Badge badgeContent={inFav.length} color="error">
+                <Badge badgeContent={inFav.length} color="primary">
                   {/* <MailIcon /> */}
                   {/* <FavoriteBorderOutlinedIcon /> */}
                   <FavoriteOutlinedIcon />
@@ -203,7 +208,7 @@ export default function PrimarySearchAppBar() {
                     inCart.length &&
                     inCart.reduce((acc, item) => (acc += item.amount), 0)
                   }
-                  color="error"
+                  color="primary"
                 >
                   {/* <NotificationsIcon /> */}
                   {/* <ShoppingBasketOutlinedIcon /> */}
@@ -213,6 +218,7 @@ export default function PrimarySearchAppBar() {
             </Link>
           </Box>
         </Toolbar>
+        {/* </Container> */}
       </AppBar>
     </Box>
   );

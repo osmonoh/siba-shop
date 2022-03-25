@@ -90,11 +90,12 @@ const ProductsCard = ({
 
           {isFav ? (
             <IconButton
+              size="large"
               onClick={() => {
                 setInFav(inFav.filter((item) => item.itemId !== itemId));
               }}
             >
-              <HeartBrokenIcon />
+              <HeartBrokenIcon fontSize="string" />
             </IconButton>
           ) : (
             <IconButton
