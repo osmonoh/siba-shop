@@ -134,6 +134,7 @@ const Products = () => {
           currentPrice={currentPrice}
           originalPrice={originalPrice}
           tags={tags}
+          isFav={false}
         />
       );
     });

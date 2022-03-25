@@ -47,6 +47,7 @@ const Favourites = () => {
           currentPrice={currentPrice}
           originalPrice={originalPrice}
           tags={tags}
+          isFav={true}
         />
       );
     });
