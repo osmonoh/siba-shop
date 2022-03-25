@@ -136,101 +136,127 @@ const ProductDetails = () => {
   };
 
   return (
-    <Card sx={{ display: "flex" }}>
-      <CardMedia
-        component="img"
-        sx={{ maxWidth: 452 }}
-        image={product.picture}
-        alt={product.displayName}
-      />
+    <div className="product-details">
+      <Card sx={{ display: "flex" }}>
+        <CardMedia
+          component="img"
+          sx={{ maxWidth: 452 }}
+          image={product.picture}
+          alt={product.displayName}
+        />
 
-      <CardContent>
-        <Typography variant="h5" component="div">
-          {product.displayName}
-        </Typography>
-        <Typography variant="subtitle1" color="text.secondary" component="div">
-          {product.description}
-        </Typography>
-        <Typography variant="h6" gutterBottom component="div">
-          &euro;{product.currentPrice}
-        </Typography>
-
-        <Box sx={{ maxWidth: 120 }}>
-          <FormControl fullWidth>
-            <InputLabel id="size">Size</InputLabel>
-            <Select
-              labelId="size"
-              id="size-select"
-              value={size}
-              label="Size"
-              onChange={(e) => {
-                setSize(e.target.value);
-                setNoSize(false);
-              }}
-            >
-              {product.availableSizes.map((item) => {
-                return (
-                  <MenuItem key={item} value={item}>
-                    {item}
-                  </MenuItem>
-                );
-              })}
-            </Select>
-          </FormControl>
-        </Box>
-
-        {noSize && <p>* Please select size</p>}
-
-        <div>
-          {/* <button onClick={onClickToCartBtn}>Add to cart</button> */}
-          {/* <button onClick={onClickToFavBtn}>
-            {!inFav.some((item) => {
-              return item.itemId === product.itemId;
-            })
-              ? "Add to favourites"
-              : "Remove from favourites"}
-          </button> */}
-        </div>
-
-        <Stack spacing={1} direction="row">
-          <Button variant="contained" onClick={onClickToCartBtn}>
-            Add to cart
-          </Button>
-          <Button variant="outlined" onClick={onClickToFavBtn}>
-            {!inFav.some((item) => {
-              return item.itemId === product.itemId;
-            })
-              ? "Add to favourites"
-              : "Remove from favourites"}
-          </Button>
-        </Stack>
-      </CardContent>
-
-      {/* <div>
-        <select
-          name="size"
-          id="size"
-          value={size}
-          onChange={(e) => {
-            setSize(e.target.value);
-            setNoSize(false);
+        <CardContent
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            gap: "32px",
+            padding: "32px",
           }}
         >
-          <option value="" defaultValue>
-            -
-          </option>
+          <div className="card-content-top">
+            <div class="card-text">
+              <Typography
+                variant="h5"
+                sx={{ marginBottom: "24px" }}
+                component="div"
+              >
+                {product.displayName}
+              </Typography>
+              <Typography
+                variant="subtitle1"
+                gutterBottom
+                color="text.secondary"
+                component="div"
+              >
+                {product.description}
+              </Typography>
+            </div>
+            <div className="size-n-price">
+              <Box sx={{ minWidth: 100, position: "relative" }}>
+                <FormControl fullWidth>
+                  <InputLabel id="size">Size</InputLabel>
+                  <Select
+                    labelId="size"
+                    id="size-select"
+                    value={size}
+                    label="Size"
+                    onChange={(e) => {
+                      setSize(e.target.value);
+                      setNoSize(false);
+                    }}
+                  >
+                    {product.availableSizes.map((item) => {
+                      return (
+                        <MenuItem key={item} value={item}>
+                          {item}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+                {noSize && <p className="no-size">* Please select size</p>}
+              </Box>
 
-          {product.availableSizes.map((item) => {
-            return (
-              <option key={item} value={item}>
-                {item}
-              </option>
-            );
-          })}
-        </select>
-        {noSize && <p>* Please choose size</p>}
-      </div> */}
-    </Card>
+              <Typography
+                variant="h5"
+                gutterBottom
+                component="div"
+                textAlign="right"
+              >
+                &euro;{product.currentPrice}
+              </Typography>
+            </div>
+          </div>
+
+          <div>
+            {/* <button onClick={onClickToCartBtn}>Add to cart</button> */}
+            {/* <button onClick={onClickToFavBtn}>
+              {!inFav.some((item) => {
+                return item.itemId === product.itemId;
+              })
+                ? "Add to favourites"
+                : "Remove from favourites"}
+            </button> */}
+          </div>
+          <Stack spacing={1} direction="row" margin="0 auto">
+            <Button variant="contained" size="large" onClick={onClickToCartBtn}>
+              Add to cart
+            </Button>
+            <Button variant="outlined" size="large" onClick={onClickToFavBtn}>
+              {!inFav.some((item) => {
+                return item.itemId === product.itemId;
+              })
+                ? "Add to favourites"
+                : "Remove from favourites"}
+            </Button>
+          </Stack>
+        </CardContent>
+        {/* <div>
+          <select
+            name="size"
+            id="size"
+            value={size}
+            onChange={(e) => {
+              setSize(e.target.value);
+              setNoSize(false);
+            }}
+          >
+            <option value="" defaultValue>
+              -
+            </option>
+            {product.availableSizes.map((item) => {
+              return (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              );
+            })}
+          </select>
+          {noSize && <p>* Please choose size</p>}
+        </div> */}
+      </Card>
+    </div>
   );
 };
 

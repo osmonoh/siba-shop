@@ -11,7 +11,6 @@ import ProductDetails from "./components/ProductDetails";
 import { Container } from "@mui/material";
 import Cart from "./components/Cart";
 import Navbar from "./components/Navbar";
-import { ContactlessOutlined } from "@mui/icons-material";
 
 import data from "./data";
 import Favourites from "./components/Favourites";
