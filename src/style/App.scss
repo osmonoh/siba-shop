@@ -75,6 +75,39 @@ a {
   align-items: center;
 }
 
-footer {
+.footer {
   margin-top: auto;
+
+  &-top {
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-mid {
+      display: flex;
+      gap: 16px;
+
+      > * + * {
+        border-left: 1px solid #9c27b0;
+        padding-left: 16px;
+      }
+    }
+
+    &-right {
+      display: flex;
+      gap: 8px;
+    }
+  }
+
+  .mfd {
+    display: inline-block;
+    color: #64b5f6;
+    color: #591764;
+    transition: 0.2s;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
 }
