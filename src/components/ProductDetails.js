@@ -14,6 +14,9 @@ import Select from "@mui/material/Select";
 
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const ProductDetails = () => {
   const { product } = useContext(MyContext);
@@ -223,12 +226,17 @@ const ProductDetails = () => {
             <Button variant="contained" size="large" onClick={onClickToCartBtn}>
               Add to cart
             </Button>
-            <Button variant="outlined" size="large" onClick={onClickToFavBtn}>
+            <Button
+              variant="outlined"
+              size="large"
+              endIcon={<FavoriteBorderIcon />}
+              onClick={onClickToFavBtn}
+            >
               {!inFav.some((item) => {
                 return item.itemId === product.itemId;
               })
-                ? "Add to favourites"
-                : "Remove from favourites"}
+                ? `Add to `
+                : "Remove from "}
             </Button>
           </Stack>
         </CardContent>

@@ -28,6 +28,12 @@ a {
   padding: 60px 0;
 }
 
+.product-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
 .product-details {
   min-height: calc(100vh - 64px);
   display: flex;

@@ -237,7 +237,12 @@ const Cart = () => {
 
   return (
     <div className="cart">
-      <Typography variant="h4" component="div" sx={{ marginBottom: "32px" }}>
+      <Typography
+        variant="h4"
+        color="text.secondary"
+        component="div"
+        sx={{ marginBottom: "32px" }}
+      >
         Shopping bag
       </Typography>
 

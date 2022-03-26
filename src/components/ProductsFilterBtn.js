@@ -15,6 +15,7 @@ const ProductsFilterBtn = ({ tag }) => {
     const tag = e.target.innerText;
     if (!tagOn) {
       setTagsFilter([...tagsFilter, tag]);
+
       setTagOn(true);
     } else {
       setTagsFilter(
@@ -30,21 +31,21 @@ const ProductsFilterBtn = ({ tag }) => {
   console.log(tagsFilter);
 
   return (
-    // <Button
-    //   variant={tagOn ? "contained" : "outlined"}
-    //   onClick={onClickFilterBtn}
-    // >
-    //   {tag}
-    // </Button>
-
-    <Grid
-      item
-      xs={1}
-      style={{ color: `${tagOn ? "hotpink" : "rebeccapurple"}` }}
+    <Button
+      variant={tagOn ? "contained" : "outlined"}
       onClick={onClickFilterBtn}
     >
       {tag}
-    </Grid>
+    </Button>
+
+    // <Grid
+    //   item
+    //   xs={1}
+    //   style={{ color: `${tagOn ? "hotpink" : "rebeccapurple"}` }}
+    //   onClick={onClickFilterBtn}
+    // >
+    //   {tag}
+    // </Grid>
   );
 };
 

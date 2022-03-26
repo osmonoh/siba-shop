@@ -79,38 +79,41 @@ const ProductsCard = ({
         </Link>
         <CardContent>
           <Link to={"/item/" + itemId}>
-            <Typography gutterBottom variant="h5" component="div" noWrap>
+            <Typography variant="h5" component="div" noWrap>
               {displayName}
             </Typography>
           </Link>
 
-          <Typography variant="h6" color="text.secondary" textAlign="right">
-            &euro;{currentPrice}
-          </Typography>
+          <div className="product-card-bottom">
+            <Typography variant="h5" color="text.secondary" textAlign="right">
+              &euro;{currentPrice}
+            </Typography>
 
-          {isFav ? (
-            <IconButton
-              size="large"
-              onClick={() => {
-                setInFav(inFav.filter((item) => item.itemId !== itemId));
-              }}
-            >
-              <HeartBrokenIcon fontSize="string" />
-            </IconButton>
-          ) : (
-            <IconButton
-              onClick={() => {
-                if (
-                  !inFav.some((item) => {
-                    return item.itemId === itemId;
-                  })
-                )
-                  setInFav([...inFav, item]);
-              }}
-            >
-              <FavoriteBorderIcon />
-            </IconButton>
-          )}
+            {inFav.some((item) => item.itemId === itemId) ? (
+              <IconButton
+                size="large"
+                onClick={() => {
+                  setInFav(inFav.filter((item) => item.itemId !== itemId));
+                }}
+              >
+                <HeartBrokenIcon fontSize="string" />
+              </IconButton>
+            ) : (
+              <IconButton
+                size="large"
+                onClick={() => {
+                  if (
+                    !inFav.some((item) => {
+                      return item.itemId === itemId;
+                    })
+                  )
+                    setInFav([...inFav, item]);
+                }}
+              >
+                <FavoriteBorderIcon fontSize="string" />
+              </IconButton>
+            )}
+          </div>
         </CardContent>
       </Card>
       {/* {isFav && (
