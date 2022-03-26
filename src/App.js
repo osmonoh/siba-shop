@@ -4,16 +4,17 @@ import { MyContext } from "./context/MyContext";
 
 import "./style/App.scss";
 
+import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Products from "./components/Products";
 import ProductDetails from "./components/ProductDetails";
+import Cart from "./components/Cart";
+import Favourites from "./components/Favourites";
+import Footer from "./components/Footer";
 
 import { Container } from "@mui/material";
-import Cart from "./components/Cart";
-import Navbar from "./components/Navbar";
 
 import data from "./data";
-import Favourites from "./components/Favourites";
 
 const App = () => {
   // const [data, setData] = useState([]);
@@ -62,6 +63,7 @@ const App = () => {
             <Route path="/favourites" element={<Favourites />} />
           </Routes>
         </Container>
+        <Footer />
       </BrowserRouter>
     </div>
   );
