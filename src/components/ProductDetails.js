@@ -18,6 +18,9 @@ import IconButton from "@mui/material/IconButton";
 
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
+import Snackbar from "@mui/material/Snackbar";
+import CloseIcon from "@mui/icons-material/Close";
+
 const ProductDetails = () => {
   const { product } = useContext(MyContext);
   // const [toCart, setToCart] = useState({});
@@ -26,6 +29,8 @@ const ProductDetails = () => {
 
   const [size, setSize] = useState("");
   const [noSize, setNoSize] = useState(false);
+
+  const [open, setOpen] = useState(false);
 
   console.log(inCart, inCart.length && typeof inCart[0].amount);
   // console.log("size------>", size);
@@ -112,8 +117,10 @@ const ProductDetails = () => {
         (item) => product.itemId === item.itemId && size === item.size
       )
     ) {
+      setOpen(true);
       setInCart([...inCart, { ...product, size, amount: 1 }]);
     } else {
+      setOpen(true);
       setInCart(
         inCart.map((item) => {
           if (product.itemId === item.itemId && size === item.size) {
@@ -137,6 +144,31 @@ const ProductDetails = () => {
       setInFav([...inFav, product]);
     else setInFav(inFav.filter((item) => item.itemId !== product.itemId));
   };
+
+  // const handleClick = () => {
+  //   setOpen(true);
+  // };
+
+  const handleSnackClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const snackAction = (
+    <React.Fragment>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleSnackClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
 
   return (
     <div className="product-details">
@@ -264,6 +296,14 @@ const ProductDetails = () => {
           {noSize && <p>* Please choose size</p>}
         </div> */}
       </Card>
+
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleSnackClose}
+        message="Added to cart"
+        action={snackAction}
+      />
     </div>
   );
 };
