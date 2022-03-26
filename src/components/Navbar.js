@@ -166,60 +166,60 @@ export default function PrimarySearchAppBar() {
   const { inFav } = useContext(MyContext);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        position="static"
-        sx={{ backgroundColor: blue[300], padding: "4px" }}
-      >
-        {/* <Container maxWidth="lg"> */}
-        <Toolbar>
-          <Link to="/">
-            <Typography
-              variant="h5"
-              component="div"
-              // sx={{ display: { xs: "none", sm: "block" } }}
+    // <Box sx={{ flexGrow: 1 }}>
+    <AppBar
+      position="static"
+      sx={{ backgroundColor: blue[300], padding: "4px" }}
+    >
+      {/* <Container maxWidth="lg"> */}
+      <Toolbar>
+        <Link to="/">
+          <Typography
+            variant="h5"
+            component="div"
+            // sx={{ display: { xs: "none", sm: "block" } }}
+          >
+            SIBA
+          </Typography>
+        </Link>
+        <Box sx={{ flexGrow: 1 }} />
+        <Box>
+          <Link to="/favourites">
+            <IconButton
+              size="large"
+              aria-label="show 4 new mails"
+              color="inherit"
             >
-              SIBA
-            </Typography>
+              <Badge badgeContent={inFav.length} color="primary">
+                {/* <MailIcon /> */}
+                {/* <FavoriteBorderOutlinedIcon /> */}
+                <FavoriteOutlinedIcon />
+              </Badge>
+            </IconButton>
           </Link>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <Link to="/favourites">
-              <IconButton
-                size="large"
-                aria-label="show 4 new mails"
-                color="inherit"
+          <Link to="/cart">
+            <IconButton
+              size="large"
+              aria-label="show 17 new notifications"
+              color="inherit"
+            >
+              <Badge
+                badgeContent={
+                  inCart.length &&
+                  inCart.reduce((acc, item) => (acc += item.amount), 0)
+                }
+                color="primary"
               >
-                <Badge badgeContent={inFav.length} color="primary">
-                  {/* <MailIcon /> */}
-                  {/* <FavoriteBorderOutlinedIcon /> */}
-                  <FavoriteOutlinedIcon />
-                </Badge>
-              </IconButton>
-            </Link>
-            <Link to="/cart">
-              <IconButton
-                size="large"
-                aria-label="show 17 new notifications"
-                color="inherit"
-              >
-                <Badge
-                  badgeContent={
-                    inCart.length &&
-                    inCart.reduce((acc, item) => (acc += item.amount), 0)
-                  }
-                  color="primary"
-                >
-                  {/* <NotificationsIcon /> */}
-                  {/* <ShoppingBasketOutlinedIcon /> */}
-                  <ShoppingBasketIcon />
-                </Badge>
-              </IconButton>
-            </Link>
-          </Box>
-        </Toolbar>
-        {/* </Container> */}
-      </AppBar>
-    </Box>
+                {/* <NotificationsIcon /> */}
+                {/* <ShoppingBasketOutlinedIcon /> */}
+                <ShoppingBasketIcon />
+              </Badge>
+            </IconButton>
+          </Link>
+        </Box>
+      </Toolbar>
+      {/* </Container> */}
+    </AppBar>
+    // </Box>
   );
 }

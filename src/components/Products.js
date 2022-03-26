@@ -143,8 +143,8 @@ const Products = () => {
   // console.log(tagsFilter);
 
   return (
-    <Box className="products">
-      <Stack spacing={1} direction="row" margin="0 0 30px 0">
+    <div className="products">
+      <Stack spacing={1} direction="row" sx={{ margin: "0 0 30px 0" }}>
         {renderButtons()}
       </Stack>
       {/* <Grid container spacing={4} margin="0 0 30px 0">
@@ -154,7 +154,7 @@ const Products = () => {
       <Grid container spacing={4}>
         {renderCards()}
       </Grid>
-    </Box>
+    </div>
   );
 };
 

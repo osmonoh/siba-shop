@@ -8,11 +8,25 @@ const Footer = () => {
   return (
     <footer>
       <Box
-        bgcolor="pink"
-        sx={{ backgroundColor: "pink", padding: "12px", textAlign: "center" }}
+        bgcolor="gold"
+        sx={{
+          //   backgroundColor: "primary",
+          padding: "24px 12px",
+          textAlign: "center",
+        }}
       >
         <Container maxWidth="lg">
-          <Typography>Created by Dusan Chmelko &copy; 2022</Typography>
+          <Typography>
+            Created by{" "}
+            <a
+              className="mfd"
+              href="https://dusan-chmelko.netlify.app/"
+              target="blank"
+            >
+              Dusan Chmelko
+            </a>{" "}
+            &copy; 2022
+          </Typography>
         </Container>
       </Box>
     </footer>
