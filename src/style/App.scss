@@ -16,17 +16,42 @@ a {
 }
 
 .home {
-  padding: 60px 0;
+  padding: 0 0 120px;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  // gap: 60px;
+
+  .member-link {
+    text-decoration: underline;
+  }
+
+  .hero-img {
+    height: 85vh;
+    margin-bottom: 60px;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      // object-position: bottom;
+    }
+  }
+
+  .home-sub-hero {
+    margin-bottom: 60px;
+  }
+}
+
+.categories {
+  margin-bottom: 60px;
 }
 
 .products,
 .product-details,
 .cart,
 .favourites {
-  padding: 60px 0;
+  padding: 60px 0 120px;
 }
 
 .product-card-bottom {

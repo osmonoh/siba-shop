@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-
-import CollectionsCard from "./CollectionsCard";
-import { Stack } from "@mui/material";
-
-import mova from "../api/mova";
 import { Link } from "react-router-dom";
 import { MyContext } from "../context/MyContext";
+import mova from "../api/mova";
+import CollectionsCard from "./CollectionsCard";
+
+import { Stack, Typography } from "@mui/material";
 
 const Collections = () => {
   const { setProductsType } = useContext(MyContext);
@@ -46,9 +45,14 @@ const Collections = () => {
   };
 
   return (
-    <Stack direction="row" justifyContent="center" spacing={4}>
-      {renderCards()}
-    </Stack>
+    <div className="collections">
+      <Typography variant="h5" gutterBottom>
+        Our new collections waiting for you to explore:
+      </Typography>
+      <Stack direction="row" justifyContent="space-between" spacing={4}>
+        {renderCards()}
+      </Stack>
+    </div>
   );
 };
 

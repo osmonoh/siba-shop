@@ -3,8 +3,7 @@ import { MyContext } from "../context/MyContext";
 
 import ProductsCard from "./ProductsCard";
 
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
+import { Container, Grid, Typography } from "@mui/material";
 
 const Favourites = () => {
   const { inFav, setInFav } = useContext(MyContext);
@@ -55,18 +54,20 @@ const Favourites = () => {
 
   return (
     <div className="favourites">
-      <Typography
-        variant="h4"
-        color="text.secondary"
-        component="div"
-        sx={{ marginBottom: "32px" }}
-      >
-        Your favourites
-      </Typography>
-      {/* {inFav.length ? renderFavItems() : <p>No products here</p>} */}
-      <Grid container spacing={4}>
-        {inFav.length ? renderFavItems() : <p>No products here</p>}
-      </Grid>
+      <Container maxWidth="lg">
+        <Typography
+          variant="h4"
+          color="text.secondary"
+          component="div"
+          sx={{ marginBottom: "32px" }}
+        >
+          Your favourites
+        </Typography>
+        {/* {inFav.length ? renderFavItems() : <p>No products here</p>} */}
+        <Grid container spacing={4}>
+          {inFav.length ? renderFavItems() : <p>No products here</p>}
+        </Grid>
+      </Container>
     </div>
   );
 };

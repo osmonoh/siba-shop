@@ -2,9 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import mova from "../api/mova";
 import { MyContext } from "../context/MyContext";
 
-import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
 import { Box } from "@mui/system";
+import { Container, Grid, Stack } from "@mui/material";
 
 import ProductsFilterBtn from "./ProductsFilterBtn";
 import ProductsCard from "./ProductsCard";
@@ -144,16 +143,18 @@ const Products = () => {
 
   return (
     <div className="products">
-      <Stack spacing={1} direction="row" sx={{ margin: "0 0 30px 0" }}>
-        {renderButtons()}
-      </Stack>
-      {/* <Grid container spacing={4} margin="0 0 30px 0">
+      <Container maxWidth="lg">
+        <Stack spacing={1} direction="row" sx={{ margin: "0 0 30px 0" }}>
+          {renderButtons()}
+        </Stack>
+        {/* <Grid container spacing={4} margin="0 0 30px 0">
         {renderButtons()}
       </Grid> */}
 
-      <Grid container spacing={4}>
-        {renderCards()}
-      </Grid>
+        <Grid container spacing={4}>
+          {renderCards()}
+        </Grid>
+      </Container>
     </div>
   );
 };

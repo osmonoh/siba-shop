@@ -45,9 +45,11 @@ const Categories = () => {
   };
 
   return (
-    <Stack direction="row" justifyContent="center" spacing={4}>
-      {renderCards()}
-    </Stack>
+    <div className="categories">
+      <Stack direction="row" justifyContent="center" spacing={4}>
+        {renderCards()}
+      </Stack>
+    </div>
   );
 };
 

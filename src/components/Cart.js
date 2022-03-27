@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { MyContext } from "../context/MyContext";
 
 import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Card from "@mui/material/Card";
+import { Container, Stack, Card } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
@@ -14,7 +14,10 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
 
+import { grey, purple, indigo, blue } from "@mui/material/colors";
+
 const Cart = () => {
+  const { setProduct } = useContext(MyContext);
   const { inCart, setInCart } = useContext(MyContext);
   const [cartTotal, setCartTotal] = useState(0);
 
@@ -23,18 +26,34 @@ const Cart = () => {
       return (
         <div key={i}>
           <Card sx={{ display: "flex" }}>
-            <CardMedia
-              component="img"
-              sx={{ width: 151 }}
-              image={item.picture}
-              alt={item.displayName}
-            />
+            <Link
+              to={"/item/" + item.itemId}
+              onClick={() => {
+                setProduct(item);
+                sessionStorage.setItem("product", JSON.stringify(item));
+              }}
+            >
+              <CardMedia
+                component="img"
+                sx={{ width: 151 }}
+                image={item.picture}
+                alt={item.displayName}
+              />
+            </Link>
 
             <CardContent sx={{ width: "100%", padding: "24px" }}>
               <div className="cart-item-first-line">
-                <Typography variant="h5" component="div">
-                  {item.displayName}
-                </Typography>
+                <Link
+                  to={"/item/" + item.itemId}
+                  onClick={() => {
+                    setProduct(item);
+                    sessionStorage.setItem("product", JSON.stringify(item));
+                  }}
+                >
+                  <Typography variant="h5" component="div">
+                    {item.displayName}
+                  </Typography>
+                </Link>
                 {/* <Typography variant="subtitle1" color="text.secondary" component="div">
                             {item.description}
                           </Typography> */}
@@ -237,53 +256,56 @@ const Cart = () => {
 
   return (
     <div className="cart">
-      <Typography
-        variant="h4"
-        color="text.secondary"
-        component="div"
-        sx={{ marginBottom: "32px" }}
-      >
-        Shopping bag
-      </Typography>
-
-      <div className="cart-content">
-        <Stack spacing={2} sx={{ flexGrow: 1 }}>
-          {inCart.length ? (
-            renderCartItems()
-          ) : (
-            <p>Your shopping bag is empty</p>
-          )}
-        </Stack>
-
-        <Card
-          sx={{
-            width: "320px",
-            // height: "188px",
-            backgroundColor: "rgba(255, 215, 0, 0.5)",
-            backgroundColor: "pink",
-
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "16px",
-            padding: "39px 32px",
-          }}
+      <Container maxWidth="lg">
+        <Typography
+          variant="h4"
+          color="text.secondary"
+          component="div"
+          sx={{ marginBottom: "32px" }}
         >
-          <div className="total-card">
-            <Typography variant="h5" component="div">
-              Total ({inCart.length} items): &euro;{cartTotal}
-            </Typography>
-            <Typography variant="caption" component="div">
-              *This total does not include delivery costs
-            </Typography>
-          </div>
+          Shopping bag
+        </Typography>
 
-          <Button variant="contained" size="large">
-            Proceed to checkout
-          </Button>
-        </Card>
-      </div>
+        <div className="cart-content">
+          <Stack spacing={2} sx={{ flexGrow: 1 }}>
+            {inCart.length ? (
+              renderCartItems()
+            ) : (
+              <p>Your shopping bag is empty</p>
+            )}
+          </Stack>
+
+          <Card
+            sx={{
+              width: "320px",
+              // height: "188px",
+              backgroundColor: "rgba(255, 215, 0, 0.5)",
+              backgroundColor: "pink",
+              backgroundColor: purple[100],
+
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "16px",
+              padding: "39px 32px",
+            }}
+          >
+            <div className="total-card">
+              <Typography variant="h5" component="div">
+                Total ({inCart.length} items): &euro;{cartTotal}
+              </Typography>
+              <Typography variant="caption" component="div">
+                *This total does not include delivery costs
+              </Typography>
+            </div>
+
+            <Button variant="contained" size="large">
+              Proceed to checkout
+            </Button>
+          </Card>
+        </div>
+      </Container>
     </div>
   );
 };

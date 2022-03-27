@@ -1,16 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import { Typography } from "@mui/material";
-
+import { Box, Container, Typography } from "@mui/material";
 import { grey, purple, indigo, blue } from "@mui/material/colors";
-
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import TwitterIcon from "@mui/icons-material/Twitter";
+import { Facebook, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
 
 const Footer = () => {
   return (
@@ -18,6 +11,7 @@ const Footer = () => {
       <Box
         // bgcolor="#9c27b0"
         bgcolor={purple[100]}
+        // bgcolor="pink"
         sx={{
           //   backgroundColor: "primary",
           padding: "32px 12px 24px",
@@ -30,7 +24,10 @@ const Footer = () => {
               <Typography variant="h5" component="span">
                 SIBA
               </Typography>
-              <Typography variant="subtitle"> clothes shop</Typography>
+              <Typography variant="subtitle2" component="span">
+                {" "}
+                clothes shop
+              </Typography>
             </div>
             <div className="footer-top-mid">
               <div>
@@ -101,33 +98,34 @@ const Footer = () => {
                 href="https://dusan-chmelko.netlify.app/"
                 target="_blank"
               >
-                <TwitterIcon />
+                <Twitter />
               </a>
               <a
                 className="social-link"
                 href="https://dusan-chmelko.netlify.app/"
                 target="_blank"
               >
-                <FacebookIcon />
+                <Facebook />
               </a>
               <a
                 className="social-link"
                 href="https://dusan-chmelko.netlify.app/"
                 target="_blank"
               >
-                <LinkedInIcon />
+                <LinkedIn />
               </a>
               <a
                 className="social-link"
                 href="https://dusan-chmelko.netlify.app/"
                 target="_blank"
               >
-                <InstagramIcon />
+                <Instagram />
               </a>
             </div>
           </div>
 
           <Typography
+            variant="body2"
             sx={{
               textAlign: "center",
               // borderTop: "1px solid #9c27b0",

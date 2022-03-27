@@ -53,16 +53,16 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         {/* <Cart /> */}
-        <Container maxWidth="lg">
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/category/:id" element={<Products />} />
-            <Route path="/collection/:id" element={<Products />} />
-            <Route path="/item/:id" element={<ProductDetails />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/favourites" element={<Favourites />} />
-          </Routes>
-        </Container>
+        {/* <Container maxWidth="lg"> */}
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/category/:id" element={<Products />} />
+          <Route path="/collection/:id" element={<Products />} />
+          <Route path="/item/:id" element={<ProductDetails />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/favourites" element={<Favourites />} />
+        </Routes>
+        {/* </Container> */}
         <Footer />
       </BrowserRouter>
     </div>

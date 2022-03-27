@@ -139,8 +139,9 @@
 // };
 // export default Navbar;
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import mova from "../api/mova";
 
 // import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
@@ -165,6 +166,41 @@ export default function PrimarySearchAppBar() {
   const { inCart } = useContext(MyContext);
   const { inFav } = useContext(MyContext);
 
+  const { setProductsType } = useContext(MyContext);
+
+  const [categories, setCategories] = useState([]);
+
+  const getCategories = async () => {
+    const result = await mova.get("./categories");
+
+    setCategories(result.data);
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  const renderCategories = () => {
+    return categories.map(({ displayName, categoryId, parentId }) => {
+      if (parentId === "root")
+        return (
+          <Link
+            to={"/category/" + categoryId}
+            key={categoryId}
+            onClick={() => {
+              sessionStorage.setItem(
+                "productsType",
+                JSON.stringify({ category: categoryId })
+              );
+              setProductsType({ category: categoryId });
+            }}
+          >
+            <Typography>{displayName}</Typography>
+          </Link>
+        );
+    });
+  };
+
   return (
     // <Box sx={{ flexGrow: 1 }}>
     <AppBar
@@ -182,7 +218,19 @@ export default function PrimarySearchAppBar() {
             SIBA
           </Typography>
         </Link>
-        <Box sx={{ flexGrow: 1 }} />
+
+        <Box
+          sx={{
+            flexGrow: 1,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "24px",
+          }}
+        >
+          {renderCategories()}
+        </Box>
+
         <Box>
           <Link to="/favourites">
             <IconButton
