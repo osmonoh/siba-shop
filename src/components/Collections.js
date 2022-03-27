@@ -46,7 +46,7 @@ const Collections = () => {
 
   return (
     <div className="collections">
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h5" sx={{ marginBottom: "24px" }}>
         Our new collections waiting for you to explore:
       </Typography>
       <Stack direction="row" justifyContent="space-between" spacing={4}>

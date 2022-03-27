@@ -153,7 +153,7 @@ import Badge from "@mui/material/Badge";
 
 import { grey, purple, indigo, blue } from "@mui/material/colors";
 
-import { Container } from "@mui/material";
+import { Container, Button } from "@mui/material";
 
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
@@ -204,7 +204,7 @@ export default function PrimarySearchAppBar() {
   return (
     // <Box sx={{ flexGrow: 1 }}>
     <AppBar
-      position="static"
+      position="fixed"
       sx={{ backgroundColor: blue[300], padding: "4px" }}
     >
       {/* <Container maxWidth="lg"> */}
@@ -268,6 +268,7 @@ export default function PrimarySearchAppBar() {
       </Toolbar>
       {/* </Container> */}
     </AppBar>
+    // {/* <Toolbar /> */}
     // </Box>
   );
 }

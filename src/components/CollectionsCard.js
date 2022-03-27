@@ -22,7 +22,7 @@ const CollectionsCard = ({ displayName, collectionId }) => {
         alt={collectionId}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography variant="h5" textAlign="center" component="div">
           {displayName}
         </Typography>
         {/* <Typography variant="body2" color="text.secondary">
