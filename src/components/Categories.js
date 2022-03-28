@@ -27,26 +27,14 @@ const Categories = () => {
     return categories.map(({ displayName, categoryId, parentId }) => {
       if (parentId === "root")
         return (
-          <Link
-            to={"/category/" + categoryId}
-            key={categoryId}
-            onClick={() => {
-              sessionStorage.setItem(
-                "productsType",
-                JSON.stringify({ category: categoryId })
-              );
-              setProductsType({ category: categoryId });
-            }}
-          >
-            <CategoriesCard displayName={displayName} categoryId={categoryId} />
-          </Link>
+          <CategoriesCard displayName={displayName} categoryId={categoryId} />
         );
     });
   };
 
   return (
     <div className="categories">
-      <Stack direction="row" justifyContent="center" spacing={4}>
+      <Stack direction="row" spacing={0}>
         {renderCards()}
       </Stack>
     </div>

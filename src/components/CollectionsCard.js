@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { MyContext } from "../context/MyContext";
 
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -13,27 +15,41 @@ import sports from "../images/extreme.jpg";
 const img = { summer2020, winter2020, sports };
 
 const CollectionsCard = ({ displayName, collectionId }) => {
+  const { setProductsType } = useContext(MyContext);
+
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        // height="140"
-        image={img[collectionId]}
-        alt={collectionId}
-      />
-      <CardContent>
-        <Typography variant="h5" textAlign="center" component="div">
-          {displayName}
-        </Typography>
-        {/* <Typography variant="body2" color="text.secondary">
+    <Card sx={{ flexBasis: "33%" }}>
+      <Link
+        to={"/collection/" + collectionId}
+        key={collectionId}
+        onClick={() => {
+          sessionStorage.setItem(
+            "productsType",
+            JSON.stringify({ collection: collectionId })
+          );
+          setProductsType({ collection: collectionId });
+        }}
+      >
+        <CardMedia
+          component="img"
+          // height="140"
+          image={img[collectionId]}
+          alt={collectionId}
+        />
+        <CardContent>
+          <Typography variant="h5" textAlign="center" component="div">
+            {displayName}
+          </Typography>
+          {/* <Typography variant="body2" color="text.secondary">
             Lizards are a widespread group of squamate reptiles, with over 6,000
             species, ranging across all continents except Antarctica
           </Typography> */}
-      </CardContent>
-      {/* <CardActions>
+        </CardContent>
+        {/* <CardActions>
           <Button size="small">Share</Button>
           <Button size="small">Learn More</Button>
         </CardActions> */}
+      </Link>
     </Card>
   );
 };

@@ -24,22 +24,10 @@ const Collections = () => {
   const renderCards = () => {
     return collections.map(({ displayName, collectionId }) => {
       return (
-        <Link
-          to={"/collection/" + collectionId}
-          key={collectionId}
-          onClick={() => {
-            sessionStorage.setItem(
-              "productsType",
-              JSON.stringify({ collection: collectionId })
-            );
-            setProductsType({ collection: collectionId });
-          }}
-        >
-          <CollectionsCard
-            displayName={displayName}
-            collectionId={collectionId}
-          />
-        </Link>
+        <CollectionsCard
+          displayName={displayName}
+          collectionId={collectionId}
+        />
       );
     });
   };
@@ -49,7 +37,7 @@ const Collections = () => {
       <Typography variant="h5" sx={{ marginBottom: "24px" }}>
         Our new collections waiting for you to explore:
       </Typography>
-      <Stack direction="row" justifyContent="space-between" spacing={4}>
+      <Stack direction="row" spacing={2}>
         {renderCards()}
       </Stack>
     </div>

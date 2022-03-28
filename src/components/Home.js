@@ -26,7 +26,9 @@ const Home = () => {
 
       <div className="home-sub-hero">
         <Container maxWidth="lg">
-          <Typography variant="h3">Lorem ipsum</Typography>
+          <Typography variant="h3" gutterBottom>
+            Lorem ipsum
+          </Typography>
           <Typography>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid qui
             odio totam voluptas ipsam laudantium aspernatur? Nesciunt at,
@@ -38,6 +40,20 @@ const Home = () => {
 
       <Container maxWidth="lg">
         <Categories />
+
+        <div className="home-secondary-text">
+          <Typography variant="h4" gutterBottom>
+            Lorem ipsum dolor
+          </Typography>
+          <Typography>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur
+            nobis ratione ipsum, quis est voluptate. Commodi voluptatibus minima
+            earum fuga provident, accusamus dignissimos voluptatum rerum nam
+            magni odit. At, iusto expedita. Esse soluta quibusdam aperiam magnam
+            eos repellat cupiditate ratione?
+          </Typography>
+        </div>
+
         <Collections />
       </Container>
     </div>

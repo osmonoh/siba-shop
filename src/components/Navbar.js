@@ -195,7 +195,7 @@ export default function PrimarySearchAppBar() {
               setProductsType({ category: categoryId });
             }}
           >
-            <Typography>{displayName}</Typography>
+            <Button sx={{ color: "white" }}>{displayName}</Button>
           </Link>
         );
     });
@@ -205,7 +205,7 @@ export default function PrimarySearchAppBar() {
     // <Box sx={{ flexGrow: 1 }}>
     <AppBar
       position="fixed"
-      sx={{ backgroundColor: blue[300], padding: "4px" }}
+      sx={{ backgroundColor: purple[300], padding: "4px" }}
     >
       {/* <Container maxWidth="lg"> */}
       <Toolbar>
