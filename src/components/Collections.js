@@ -1,14 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { MyContext } from "../context/MyContext";
+import React, { useEffect, useState } from "react";
 import mova from "../api/mova";
+
 import CollectionsCard from "./CollectionsCard";
 
 import { Stack, Typography } from "@mui/material";
 
 const Collections = () => {
-  const { setProductsType } = useContext(MyContext);
-
   const [collections, setCollections] = useState([]);
 
   const getCollections = async () => {

@@ -2,12 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { MyContext } from "../context/MyContext";
 
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import { CardMedia, Stack } from "@mui/material";
+import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 
 import summer2020 from "../images/summer.jpg";
 import winter2020 from "../images/winter.jpg";
@@ -32,7 +27,6 @@ const CollectionsCard = ({ displayName, collectionId }) => {
       >
         <CardMedia
           component="img"
-          // height="140"
           image={img[collectionId]}
           alt={collectionId}
         />
@@ -40,15 +34,7 @@ const CollectionsCard = ({ displayName, collectionId }) => {
           <Typography variant="h5" textAlign="center" component="div">
             {displayName}
           </Typography>
-          {/* <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography> */}
         </CardContent>
-        {/* <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
-        </CardActions> */}
       </Link>
     </Card>
   );
