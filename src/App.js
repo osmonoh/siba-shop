@@ -17,10 +17,8 @@ import { Container } from "@mui/material";
 import data from "./data";
 
 const App = () => {
-  // const [data, setData] = useState([]);
   const { inCart } = useContext(MyContext);
   const { inFav } = useContext(MyContext);
-  const { productsType } = useContext(MyContext);
 
   fetch("https://5m6exoj3o7.execute-api.eu-west-1.amazonaws.com/prod/items")
     .then((res) => res.json())
@@ -44,19 +42,13 @@ const App = () => {
     else localStorage.setItem("inFav", JSON.stringify(inFav));
   }, [inFav]);
 
-  useEffect(() => {}, [productsType]);
-
-  // console.log("inCart(APP): ", inCart);
+  // useEffect(() => {}, [productsType]);
 
   return (
     <div className="App">
-      {/* <div>
-          <pre>{JSON.stringify(data, null, 2)}</pre>
-        </div> */}
       <BrowserRouter>
         <Navbar />
-        {/* <Cart /> */}
-        {/* <Container maxWidth="lg"> */}
+
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/category/:id" element={<Products />} />
@@ -65,7 +57,7 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/favourites" element={<Favourites />} />
         </Routes>
-        {/* </Container> */}
+
         <Footer />
       </BrowserRouter>
     </div>

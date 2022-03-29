@@ -27,7 +27,11 @@ const Categories = () => {
     return categories.map(({ displayName, categoryId, parentId }) => {
       if (parentId === "root")
         return (
-          <CategoriesCard displayName={displayName} categoryId={categoryId} />
+          <CategoriesCard
+            key={categoryId}
+            displayName={displayName}
+            categoryId={categoryId}
+          />
         );
     });
   };

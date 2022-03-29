@@ -25,6 +25,7 @@ const Collections = () => {
     return collections.map(({ displayName, collectionId }) => {
       return (
         <CollectionsCard
+          key={collectionId}
           displayName={displayName}
           collectionId={collectionId}
         />

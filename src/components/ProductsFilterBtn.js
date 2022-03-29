@@ -10,17 +10,7 @@ const ProductsFilterBtn = ({ tag, index }) => {
 
   const { productsType } = useContext(MyContext);
 
-  // HERE  is The SH... !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!S
   const { filterObject, setFilterObject } = useContext(MyContext);
-  //  tagsss = [...tagsss, { [tag]: false }];
-  // Object.values(productsType)[0]]:
-  // useEffect(() => {
-  //   setItems([...items, { [tag]: false }]);
-  // }, []);
-
-  // console.log("items", items, { [tag]: false });
-
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   // const onClickFilterBtn = (e) => {
   //   const tag = e.target.innerText.toLowerCase();
@@ -56,14 +46,6 @@ const ProductsFilterBtn = ({ tag, index }) => {
       setFilterObject(on);
     }
   };
-
-  // Object.values(filterObject)[0][index] &&
-  //   Object.keys(filterObject).length &&
-  //   console.log("test", filterObject[Object.keys(filterObject)[0]][index][tag]);
-
-  // Object.values(filterObject)[0][index] &&
-  //   Object.keys(filterObject).length &&
-  //   console.log(tag, Object.values(filterObject)[0][index][tag]);
 
   return (
     <Button
