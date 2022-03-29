@@ -1,16 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
-import { MyContext } from "../context/MyContext";
-import CategoriesCard from "./CategoriesCard";
-
+import React, { useEffect, useState } from "react";
 import mova from "../api/mova";
+
+import CategoriesCard from "./CategoriesCard";
 
 import { Stack } from "@mui/material";
 
 const Categories = () => {
-  const { setProductsType } = useContext(MyContext);
-
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
