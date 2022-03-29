@@ -32,7 +32,7 @@ const ProductDetails = () => {
 
   const [open, setOpen] = useState(false);
 
-  console.log(inCart, inCart.length && typeof inCart[0].amount);
+  // console.log(inCart, inCart.length && typeof inCart[0].amount);
   // console.log("size------>", size);
 
   // return (
