@@ -2,22 +2,20 @@ import React, { useContext, useEffect, useState } from "react";
 import mova from "../api/mova";
 import { MyContext } from "../context/MyContext";
 
-import { Box } from "@mui/system";
-import { Container, Grid, Stack } from "@mui/material";
-
 import ProductsFilterBtn from "./ProductsFilterBtn";
 import ProductsCard from "./ProductsCard";
 
+import { Container, Grid, Stack } from "@mui/material";
+
 const Products = () => {
+  const { tagsFilter, setTagsFilter } = useContext(MyContext);
+  const { productsType } = useContext(MyContext);
+  const { setFilterObject } = useContext(MyContext);
+
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-  // const [tagsFilter, setTagsFilter] = useState([]);
-
   // const [tagOn, setTagOn] = useState(false);
-
-  const { tagsFilter, setTagsFilter } = useContext(MyContext);
-  const { productsType } = useContext(MyContext);
 
   const getProducts = async (type) => {
     const result = await mova.get("./items", {
@@ -40,6 +38,22 @@ const Products = () => {
       setFilteredProducts(products);
     }
   }, [tagsFilter]);
+
+  const createFilterObject = () => {
+    return [
+      ...new Set(products.reduce((acc, item) => acc.concat(item.tags), [])),
+    ].map((item) => {
+      return { [item]: false };
+    });
+  };
+
+  useEffect(() => {
+    setFilterObject({ [Object.values(productsType)[0]]: createFilterObject() });
+  }, [products, productsType]);
+
+  useEffect(() => {
+    setTagsFilter([]);
+  }, [productsType, products]);
 
   const renderButtons = () => {
     return [
@@ -76,25 +90,6 @@ const Products = () => {
       );
     });
   };
-
-  const createFilterObject = () => {
-    return [
-      ...new Set(products.reduce((acc, item) => acc.concat(item.tags), [])),
-    ].map((item) => {
-      return { [item]: false };
-    });
-  };
-  const { filterObject, setFilterObject } = useContext(MyContext);
-
-  useEffect(() => {
-    setFilterObject({ [Object.values(productsType)[0]]: createFilterObject() });
-  }, [products, productsType]);
-
-  useEffect(() => {
-    setTagsFilter([]);
-  }, [productsType, products]);
-
-  console.log(tagsFilter);
 
   return (
     <div className="products">
