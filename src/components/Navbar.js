@@ -14,9 +14,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { grey, purple, indigo, blue } from "@mui/material/colors";
-
-import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
-import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import { FavoriteOutlined, ShoppingBasket } from "@mui/icons-material";
 
 const Navbar = () => {
   const { inCart } = useContext(MyContext);
@@ -93,7 +91,7 @@ const Navbar = () => {
               color="inherit"
             >
               <Badge badgeContent={inFav.length} color="primary">
-                <FavoriteOutlinedIcon />
+                <FavoriteOutlined />
               </Badge>
             </IconButton>
           </Link>
@@ -110,7 +108,7 @@ const Navbar = () => {
                 }
                 color="primary"
               >
-                <ShoppingBasketIcon />
+                <ShoppingBasket />
               </Badge>
             </IconButton>
           </Link>

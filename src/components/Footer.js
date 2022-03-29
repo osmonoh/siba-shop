@@ -13,7 +13,6 @@ const Footer = () => {
         bgcolor={purple[100]}
         // bgcolor="pink"
         sx={{
-          //   backgroundColor: "primary",
           padding: "32px 12px 24px",
           color: "#9c27b0",
         }}
@@ -128,7 +127,6 @@ const Footer = () => {
             variant="body2"
             sx={{
               textAlign: "center",
-              // borderTop: "1px solid #9c27b0",
               paddingTop: "12px",
             }}
           >

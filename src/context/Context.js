@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { MyContext } from "./MyContext";
 
 const Context = ({ children }) => {
-  // const [products, setProducts] = useState([]);
   const [product, setProduct] = useState(
     JSON.parse(sessionStorage.getItem("product")) || {}
   );
@@ -10,6 +9,7 @@ const Context = ({ children }) => {
     JSON.parse(sessionStorage.getItem("productsType")) || {}
   );
   const [tagsFilter, setTagsFilter] = useState([]);
+  const [filterObject, setFilterObject] = useState([]);
   const [inCart, setInCart] = useState(
     JSON.parse(localStorage.getItem("inCart")) || []
   );
@@ -17,13 +17,9 @@ const Context = ({ children }) => {
     JSON.parse(localStorage.getItem("inFav")) || []
   );
 
-  const [filterObject, setFilterObject] = useState([]);
-
   return (
     <MyContext.Provider
       value={{
-        // products,
-        // setProducts,
         product,
         setProduct,
         productsType,
