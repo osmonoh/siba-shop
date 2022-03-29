@@ -20,6 +20,7 @@ const App = () => {
   // const [data, setData] = useState([]);
   const { inCart } = useContext(MyContext);
   const { inFav } = useContext(MyContext);
+  const { productsType } = useContext(MyContext);
 
   fetch("https://5m6exoj3o7.execute-api.eu-west-1.amazonaws.com/prod/items")
     .then((res) => res.json())
@@ -42,6 +43,8 @@ const App = () => {
     if (!inFav.length) localStorage.removeItem("inFav");
     else localStorage.setItem("inFav", JSON.stringify(inFav));
   }, [inFav]);
+
+  useEffect(() => {}, [productsType]);
 
   // console.log("inCart(APP): ", inCart);
 

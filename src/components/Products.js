@@ -15,8 +15,8 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-  console.log(JSON.parse(sessionStorage.getItem("products")));
-  console.log(products);
+  // console.log(JSON.parse(sessionStorage.getItem("product")));
+  // console.log(products);
   // const [tagsFilter, setTagsFilter] = useState([]);
 
   // const [tagOn, setTagOn] = useState(false);
@@ -86,7 +86,7 @@ const Products = () => {
         // >
         //   {item}
         // </Grid>
-        <ProductsFilterBtn key={index} tag={item} />
+        <ProductsFilterBtn key={index} tag={item} index={index} />
       );
     });
   };
@@ -139,7 +139,26 @@ const Products = () => {
     });
   };
 
-  // console.log(tagsFilter);
+  const createFilterObject = () => {
+    return [
+      ...new Set(products.reduce((acc, item) => acc.concat(item.tags), [])),
+    ].map((item, index) => {
+      return { [item]: false };
+    });
+  };
+  const { filterObject, setFilterObject } = useContext(MyContext);
+
+  useEffect(() => {
+    setFilterObject({ [Object.values(productsType)[0]]: createFilterObject() });
+  }, [products, productsType]);
+
+  console.log(tagsFilter);
+  // console.log("productsType", productsType);
+  // console.log("filterObject", filterObject);
+
+  useEffect(() => {
+    setTagsFilter([]);
+  }, [productsType]);
 
   return (
     <div className="products">
