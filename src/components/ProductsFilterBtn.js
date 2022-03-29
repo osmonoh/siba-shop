@@ -1,16 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { MyContext } from "../context/MyContext";
 
 import Button from "@mui/material/Button";
 
 const ProductsFilterBtn = ({ tag, index }) => {
   const { tagsFilter, setTagsFilter } = useContext(MyContext);
-  // const [tagOn, setTagOn] = useState(tagsFilter.includes(tag));
-  const [tagOn, setTagOn] = useState(false);
-
-  const { productsType } = useContext(MyContext);
-
   const { filterObject, setFilterObject } = useContext(MyContext);
+  // const [tagOn, setTagOn] = useState(tagsFilter.includes(tag));
+  // const [tagOn, setTagOn] = useState(false);
 
   // const onClickFilterBtn = (e) => {
   //   const tag = e.target.innerText.toLowerCase();
