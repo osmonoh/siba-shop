@@ -1,5 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+
 import { MyContext } from "./context/MyContext";
 
 import Navbar from "./components/Navbar";
@@ -17,6 +19,7 @@ import "./style/App.scss";
 const App = () => {
   const { inCart } = useContext(MyContext);
   const { inFav } = useContext(MyContext);
+  const { productsType, setProductsType } = useContext(MyContext);
 
   // fetch("https://5m6exoj3o7.execute-api.eu-west-1.amazonaws.com/prod/items")
   //   .then((res) => res.json())
@@ -32,22 +35,30 @@ const App = () => {
     else localStorage.setItem("inFav", JSON.stringify(inFav));
   }, [inFav]);
 
+  const location = useLocation();
+  const [, type, val] = location.pathname.split("/");
+
+  useEffect(() => {
+    if (type === "category" || type === "collection")
+      setProductsType({ [type]: val });
+  }, [location.pathname]);
+
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
+      {/* <BrowserRouter> */}
+      <Navbar />
 
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/category/:id" element={<Products />} />
-          <Route path="/collection/:id" element={<Products />} />
-          <Route path="/item/:id" element={<ProductDetails />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/favourites" element={<Favourites />} />
-        </Routes>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/category/:id" element={<Products />} />
+        <Route path="/collection/:id" element={<Products />} />
+        <Route path="/item/:id" element={<ProductDetails />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/favourites" element={<Favourites />} />
+      </Routes>
 
-        <Footer />
-      </BrowserRouter>
+      <Footer />
+      {/* </BrowserRouter> */}
     </div>
   );
 };

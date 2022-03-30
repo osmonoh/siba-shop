@@ -3,9 +3,13 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import Context from "./context/Context";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 ReactDOM.render(
   <Context>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Context>,
   document.querySelector("#root")
 );
