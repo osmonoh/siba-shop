@@ -129,6 +129,24 @@ const Cart = () => {
     });
   };
 
+  const renderNoItems = () => {
+    return (
+      <div className="no-items">
+        <Typography
+          variant="h6"
+          color="text.secondary"
+          component="div"
+          sx={{ marginBottom: "32px" }}
+        >
+          Shopping bag is empty.
+        </Typography>
+        <Button variant="contained" color="secondary">
+          <Link to="/">Back to shop</Link>
+        </Button>
+      </div>
+    );
+  };
+
   useEffect(() => {
     setCartTotal(
       Math.round(
@@ -152,7 +170,50 @@ const Cart = () => {
           Shopping bag
         </Typography>
 
-        <div className="cart-content">
+        {inCart.length ? (
+          <div className="cart-content">
+            <Stack spacing={2} sx={{ flexGrow: 1 }}>
+              {inCart.length ? (
+                renderCartItems()
+              ) : (
+                <p>Your shopping bag is empty</p>
+              )}
+            </Stack>
+
+            <Card
+              sx={{
+                width: "320px",
+                backgroundColor: "rgba(255, 215, 0, 0.5)",
+                backgroundColor: "pink",
+                backgroundColor: purple[100],
+
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "16px",
+                padding: "39px 32px",
+              }}
+            >
+              <div className="total-card">
+                <Typography variant="h5" component="div">
+                  Total ({inCart.length} items): &euro;{cartTotal}
+                </Typography>
+                <Typography variant="caption" component="div">
+                  *This total does not include delivery costs
+                </Typography>
+              </div>
+
+              <Button variant="contained" size="large">
+                Proceed to checkout
+              </Button>
+            </Card>
+          </div>
+        ) : (
+          renderNoItems()
+        )}
+
+        {/* <div className="cart-content">
           <Stack spacing={2} sx={{ flexGrow: 1 }}>
             {inCart.length ? (
               renderCartItems()
@@ -189,7 +250,7 @@ const Cart = () => {
               Proceed to checkout
             </Button>
           </Card>
-        </div>
+        </div> */}
       </Container>
     </div>
   );

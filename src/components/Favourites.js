@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { MyContext } from "../context/MyContext";
 
 import ProductsCard from "./ProductsCard";
 
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography, Button } from "@mui/material";
 
 const Favourites = () => {
   const { inFav } = useContext(MyContext);
@@ -35,6 +36,32 @@ const Favourites = () => {
     });
   };
 
+  const renderNoItems = () => {
+    return (
+      <div className="no-items">
+        <Typography
+          variant="h6"
+          color="text.secondary"
+          component="div"
+          sx={{ marginBottom: "32px" }}
+        >
+          You have no products saved here.
+        </Typography>
+        {/* <Typography
+          variant="h6"
+          color="text.secondary"
+          component="div"
+          sx={{ marginBottom: "32px" }}
+        >
+          Like products in the shop to save them to your favourites.
+        </Typography> */}
+        <Button variant="contained" color="secondary">
+          <Link to="/">Back to shop</Link>
+        </Button>
+      </div>
+    );
+  };
+
   return (
     <div className="favourites">
       <Container maxWidth="lg">
@@ -46,9 +73,14 @@ const Favourites = () => {
         >
           Your favourites
         </Typography>
-        <Grid container spacing={4}>
-          {inFav.length ? renderFavItems() : <p>No products here</p>}
-        </Grid>
+
+        {inFav.length ? (
+          <Grid container spacing={4}>
+            {renderFavItems()}
+          </Grid>
+        ) : (
+          renderNoItems()
+        )}
       </Container>
     </div>
   );
