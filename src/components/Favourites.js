@@ -55,7 +55,7 @@ const Favourites = () => {
         >
           Like products in the shop to save them to your favourites.
         </Typography> */}
-        <Button variant="contained" color="secondary">
+        <Button variant="contained" color="secondary" size="large">
           <Link to="/">Back to shop</Link>
         </Button>
       </div>

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { MyContext } from "../context/MyContext";
 
 import {
@@ -17,7 +18,7 @@ import {
   IconButton,
   Snackbar,
 } from "@mui/material";
-import { FavoriteBorder, Close } from "@mui/icons-material";
+import { ArrowBack, FavoriteBorder, Close } from "@mui/icons-material";
 
 const ProductDetails = () => {
   const { product } = useContext(MyContext);
@@ -27,6 +28,8 @@ const ProductDetails = () => {
   const [size, setSize] = useState("");
   const [noSize, setNoSize] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const onClickToCartBtn = () => {
     if (size === "") setNoSize(true);
@@ -86,6 +89,10 @@ const ProductDetails = () => {
   return (
     <div className="product-details">
       <Container maxWidth="lg">
+        <IconButton sx={{ marginBottom: "32px" }} onClick={() => navigate(-1)}>
+          <ArrowBack fontSize="large" />
+        </IconButton>
+
         <Card sx={{ display: "flex" }}>
           <CardMedia
             component="img"

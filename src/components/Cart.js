@@ -140,7 +140,7 @@ const Cart = () => {
         >
           Shopping bag is empty.
         </Typography>
-        <Button variant="contained" color="secondary">
+        <Button variant="contained" color="secondary" size="large">
           <Link to="/">Back to shop</Link>
         </Button>
       </div>

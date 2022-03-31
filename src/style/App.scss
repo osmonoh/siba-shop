@@ -59,7 +59,6 @@ a {
 }
 
 .products,
-.product-details,
 .cart,
 .favourites {
   padding: 60px 0 120px;
@@ -72,9 +71,11 @@ a {
 }
 
 .product-details {
+  position: relative;
   min-height: calc(100vh - 64px);
   display: flex;
   align-items: center;
+  padding: 30px 0 120px;
 
   .card-text {
     margin-bottom: 32px;
