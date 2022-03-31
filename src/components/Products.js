@@ -19,9 +19,12 @@ const Products = () => {
   // const [tagOn, setTagOn] = useState(false);
 
   const getProducts = async (type) => {
-    const result = await mova.get("./items", {
-      params: type,
-    });
+    const result =
+      type.category === "all"
+        ? await mova.get("./items")
+        : await mova.get("./items", {
+            params: type,
+          });
 
     setProducts(result.data);
   };

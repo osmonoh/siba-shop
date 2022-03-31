@@ -80,6 +80,19 @@ const Navbar = () => {
             gap: "24px",
           }}
         >
+          <Link
+            to={"/category/all"}
+            key={"all"}
+            onClick={() => {
+              sessionStorage.setItem(
+                "productsType",
+                JSON.stringify({ category: "all" })
+              );
+              setProductsType({ category: "all" });
+            }}
+          >
+            <Button sx={{ color: "white" }}>all</Button>
+          </Link>
           {renderCategories()}
         </Box>
 
