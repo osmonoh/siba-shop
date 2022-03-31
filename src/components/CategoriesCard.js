@@ -4,8 +4,8 @@ import { MyContext } from "../context/MyContext";
 
 import Typography from "@mui/material/Typography";
 
-import ladies from "../images/ladies1.jpg";
-import men from "../images/mens1.jpg";
+import ladies from "../images/ladies1-r.jpg";
+import men from "../images/mens1-r.jpg";
 const img = { ladies, men };
 
 const CategoriesCard = ({ displayName, categoryId }) => {

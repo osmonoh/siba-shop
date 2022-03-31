@@ -4,9 +4,9 @@ import { MyContext } from "../context/MyContext";
 
 import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 
-import summer2020 from "../images/summer.jpg";
-import winter2020 from "../images/winter.jpg";
-import sports from "../images/extreme.jpg";
+import summer2020 from "../images/summer-r.jpg";
+import winter2020 from "../images/winter-r.jpg";
+import sports from "../images/extreme-r.jpg";
 const img = { summer2020, winter2020, sports };
 
 const CollectionsCard = ({ displayName, collectionId }) => {

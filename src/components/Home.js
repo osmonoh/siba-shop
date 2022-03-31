@@ -4,7 +4,7 @@ import Collections from "./Collections";
 
 import { Container, Typography } from "@mui/material";
 
-import heroImg from "../images/hero4.jpg";
+import heroImg from "../images/hero4-r-min.jpg";
 
 const Home = () => {
   return (
