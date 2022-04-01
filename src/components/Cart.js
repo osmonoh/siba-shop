@@ -182,7 +182,7 @@ const Cart = () => {
 
             <Card
               sx={{
-                width: "320px",
+                // width: "360px",
                 backgroundColor: "rgba(255, 215, 0, 0.5)",
                 backgroundColor: "pink",
                 backgroundColor: purple[100],
