@@ -60,7 +60,7 @@ const Navbar = () => {
       sx={{ backgroundColor: purple[700], padding: "4px" }}
     >
       {/* <Container maxWidth="lg"> */}
-      <Toolbar>
+      <Toolbar sx={{ flexWrap: "wrap", justifyContent: "center" }}>
         <Link to="/">
           <Typography
             variant="h5"
@@ -77,8 +77,10 @@ const Navbar = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            gap: "24px",
+            // gap: "24px",
           }}
+          gap={{ md: "12px", lg: "24px" }}
+          order={{ xs: "5", sm: "0" }}
         >
           <Link
             to={"/category/all"}

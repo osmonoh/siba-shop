@@ -123,12 +123,23 @@ a {
   &-top {
     margin-bottom: 32px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    column-gap: 60px;
+
+    @media (max-width: 800px) {
+      margin-bottom: 16px;
+      justify-content: center;
+    }
 
     &-mid {
       display: flex;
       gap: 16px;
+
+      @media (max-width: 510px) {
+        margin-top: 24px;
+      }
 
       > * + * {
         border-left: 1px solid #9c27b0;
@@ -138,7 +149,11 @@ a {
 
     &-right {
       display: flex;
-      gap: 8px;
+      gap: 12px;
+
+      @media (max-width: 800px) {
+        margin-top: 24px;
+      }
     }
   }
 
