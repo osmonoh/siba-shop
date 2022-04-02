@@ -105,6 +105,7 @@ const Products = () => {
             margin: "0 0 30px 0",
             flexWrap: "wrap",
             justifyContent: "center",
+            gap: "4px",
           }}
         >
           {renderButtons()}
