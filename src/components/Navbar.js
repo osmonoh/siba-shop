@@ -121,7 +121,7 @@ const Navbar = () => {
           <Link to="/favourites">
             <IconButton
               size="large"
-              aria-label="show 4 new mails"
+              aria-label="show number of liked items"
               color="inherit"
             >
               <Badge badgeContent={inFav.length} color="primary">
@@ -132,7 +132,7 @@ const Navbar = () => {
           <Link to="/cart">
             <IconButton
               size="large"
-              aria-label="show 17 new notifications"
+              aria-label="show number of items in cart"
               color="inherit"
             >
               <Badge

@@ -33,9 +33,16 @@ const Collections = () => {
   return (
     <div className="collections">
       <Typography variant="h5" sx={{ marginBottom: "24px" }}>
-        Our new collections waiting for you to explore:
+        Explore our new collections:
       </Typography>
-      <Stack direction="row" spacing={2}>
+      <Stack
+        direction="row"
+        sx={{
+          flexWrap: "wrap",
+          justifyContent: { sm: "center", lg: "space-between" },
+          gap: { xs: "24px 2%", lg: "0" },
+        }}
+      >
         {renderCards()}
       </Stack>
     </div>

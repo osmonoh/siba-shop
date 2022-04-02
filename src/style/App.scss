@@ -31,11 +31,24 @@ a {
     margin-bottom: 60px;
 
     img {
-      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      // object-position: bottom;
+    }
+
+    &-large {
+      display: block;
+
+      @media (max-width: 600px) {
+        display: none;
+      }
+    }
+    &-small {
+      display: none;
+
+      @media (max-width: 600px) {
+        display: block;
+      }
     }
   }
 

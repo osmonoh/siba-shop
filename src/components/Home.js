@@ -5,6 +5,7 @@ import Collections from "./Collections";
 import { Container, Typography } from "@mui/material";
 
 import heroImg from "../images/hero4-r-min.jpg";
+import heroImgSmall from "../images/hero-r.jpg";
 
 const Home = () => {
   return (
@@ -12,7 +13,7 @@ const Home = () => {
       <Typography
         className="top-stripe"
         variant="subtitle2"
-        sx={{ padding: "16px 0", textAlign: "center" }}
+        sx={{ padding: "16px 8px", textAlign: "center" }}
       >
         Take advantage of member's early access and juicy discounts!{" "}
         <a className="member-link" href="https://dusan-chmelko.netlify.app/">
@@ -21,7 +22,8 @@ const Home = () => {
       </Typography>
 
       <div className="hero-img">
-        <img src={heroImg} alt="hero image" />
+        <img src={heroImg} alt="hero image" className="hero-img-large" />
+        <img src={heroImgSmall} alt="hero image" className="hero-img-small" />
       </div>
 
       <div className="home-sub-hero">

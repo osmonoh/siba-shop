@@ -13,7 +13,7 @@ const CollectionsCard = ({ displayName, collectionId }) => {
   const { setProductsType } = useContext(MyContext);
 
   return (
-    <Card sx={{ flexBasis: "33%" }}>
+    <Card sx={{ flexBasis: { xs: "100%", sm: "49%", lg: "32%" } }}>
       <Link
         to={"/collection/" + collectionId}
         key={collectionId}
