@@ -47,6 +47,7 @@ const ProductsFilterBtn = ({ tag, index }) => {
   return (
     <Button
       color="secondary"
+      size="small"
       variant={
         Object.values(filterObject)[0][index] &&
         Object.values(filterObject)[0][index][tag]

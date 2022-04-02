@@ -28,10 +28,10 @@ const ProductsCard = ({
   return (
     <Grid
       item
-      xs={12}
-      sm={6}
-      md={4}
-      lg={4}
+      // xs={12}
+      // sm={6}
+      // md={4}
+      // lg={4}
       onClick={() => {
         setProduct(item);
         sessionStorage.setItem("product", JSON.stringify(item));

@@ -25,106 +25,109 @@ const Cart = () => {
   const renderCartItems = () => {
     return inCart.map((item, i) => {
       return (
-        <div key={i}>
-          <Card sx={{ display: "flex" }}>
-            <Link
-              to={"/item/" + item.itemId}
-              onClick={() => {
-                setProduct(item);
-                sessionStorage.setItem("product", JSON.stringify(item));
-              }}
-            >
-              <CardMedia
-                component="img"
-                sx={{ width: 151 }}
-                image={item.picture}
-                alt={item.displayName}
-              />
-            </Link>
+        // <div key={i}>
+        <Card
+          key={i}
+          sx={{ width: { xs: "100%", md: "auto" }, display: "flex" }}
+        >
+          <Link
+            to={"/item/" + item.itemId}
+            onClick={() => {
+              setProduct(item);
+              sessionStorage.setItem("product", JSON.stringify(item));
+            }}
+          >
+            <CardMedia
+              component="img"
+              sx={{ width: 151 }}
+              image={item.picture}
+              alt={item.displayName}
+            />
+          </Link>
 
-            <CardContent sx={{ width: "100%", padding: "24px" }}>
-              <div className="cart-item-first-line">
-                <Link
-                  to={"/item/" + item.itemId}
-                  onClick={() => {
-                    setProduct(item);
-                    sessionStorage.setItem("product", JSON.stringify(item));
-                  }}
-                >
-                  <Typography variant="h5" component="div">
-                    {item.displayName}
-                  </Typography>
-                </Link>
-                <Typography variant="h5" component="div">
-                  &euro;{item.currentPrice}
-                </Typography>
-              </div>
-              <Typography sx={{ marginBottom: "24px" }}>
-                Size: {item.size}
-              </Typography>
-
-              <CardActions
-                sx={{ display: "flex", justifyContent: "space-between" }}
+          <CardContent sx={{ width: "100%", padding: "24px" }}>
+            <div className="cart-item-first-line">
+              <Link
+                to={"/item/" + item.itemId}
+                onClick={() => {
+                  setProduct(item);
+                  sessionStorage.setItem("product", JSON.stringify(item));
+                }}
               >
-                <div className="quantity">
-                  <IconButton
-                    aria-label="minus"
-                    onClick={() => {
-                      setInCart(
-                        inCart.map((el) => {
-                          if (
-                            el.itemId === item.itemId &&
-                            el.size === item.size
-                          ) {
-                            if (item.amount > 1) item.amount -= 1;
-                            return el;
-                          } else return el;
-                        })
-                      );
-                    }}
-                  >
-                    <IndeterminateCheckBox />
-                  </IconButton>
-                  <Typography>{item.amount}</Typography>
-                  <IconButton
-                    aria-label="plus"
-                    onClick={() => {
-                      setInCart(
-                        inCart.map((el) => {
-                          if (
-                            el.itemId === item.itemId &&
-                            el.size === item.size
-                          ) {
-                            if (item.amount < 10) item.amount += 1;
-                            return el;
-                          } else return el;
-                        })
-                      );
-                    }}
-                  >
-                    <AddBox />
-                  </IconButton>
-                </div>
+                <Typography variant="h5" component="div">
+                  {item.displayName}
+                </Typography>
+              </Link>
+              <Typography variant="h5" component="div">
+                &euro;{item.currentPrice}
+              </Typography>
+            </div>
+            <Typography sx={{ marginBottom: "24px" }}>
+              Size: {item.size}
+            </Typography>
 
+            <CardActions
+              sx={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <div className="quantity">
                 <IconButton
-                  aria-label="delete"
+                  aria-label="minus"
                   onClick={() => {
                     setInCart(
-                      inCart.filter((el) => {
-                        return (
-                          el.itemId !== item.itemId ||
-                          (el.itemId === item.itemId && el.size !== item.size)
-                        );
+                      inCart.map((el) => {
+                        if (
+                          el.itemId === item.itemId &&
+                          el.size === item.size
+                        ) {
+                          if (item.amount > 1) item.amount -= 1;
+                          return el;
+                        } else return el;
                       })
                     );
                   }}
                 >
-                  <Delete />
+                  <IndeterminateCheckBox />
                 </IconButton>
-              </CardActions>
-            </CardContent>
-          </Card>
-        </div>
+                <Typography>{item.amount}</Typography>
+                <IconButton
+                  aria-label="plus"
+                  onClick={() => {
+                    setInCart(
+                      inCart.map((el) => {
+                        if (
+                          el.itemId === item.itemId &&
+                          el.size === item.size
+                        ) {
+                          if (item.amount < 10) item.amount += 1;
+                          return el;
+                        } else return el;
+                      })
+                    );
+                  }}
+                >
+                  <AddBox />
+                </IconButton>
+              </div>
+
+              <IconButton
+                aria-label="delete"
+                onClick={() => {
+                  setInCart(
+                    inCart.filter((el) => {
+                      return (
+                        el.itemId !== item.itemId ||
+                        (el.itemId === item.itemId && el.size !== item.size)
+                      );
+                    })
+                  );
+                }}
+              >
+                <Delete />
+              </IconButton>
+            </CardActions>
+          </CardContent>
+        </Card>
+        // </div>
       );
     });
   };
@@ -141,7 +144,7 @@ const Cart = () => {
           Shopping bag is empty.
         </Typography>
         <Button variant="contained" color="secondary" size="large">
-          <Link to="/">Back to shop</Link>
+          <Link to="/category/all">Back to shop</Link>
         </Button>
       </div>
     );
@@ -172,7 +175,10 @@ const Cart = () => {
 
         {inCart.length ? (
           <div className="cart-content">
-            <Stack spacing={2} sx={{ flexGrow: 1 }}>
+            <Stack
+              spacing={2}
+              sx={{ width: { xs: "100%", md: "auto" }, flexGrow: 1 }}
+            >
               {inCart.length ? (
                 renderCartItems()
               ) : (
@@ -182,11 +188,11 @@ const Cart = () => {
 
             <Card
               sx={{
-                // width: "360px",
+                width: { xs: "100%", md: "auto" },
                 backgroundColor: "rgba(255, 215, 0, 0.5)",
                 backgroundColor: "pink",
                 backgroundColor: purple[100],
-
+                order: { xs: "-1", md: "0" },
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -195,7 +201,7 @@ const Cart = () => {
                 padding: "39px 32px",
               }}
             >
-              <div className="total-card">
+              <div className="total-card-text">
                 <Typography variant="h5" component="div">
                   Total ({inCart.length} items): &euro;{cartTotal}
                 </Typography>

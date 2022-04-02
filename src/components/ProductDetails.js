@@ -93,7 +93,12 @@ const ProductDetails = () => {
           <ArrowBack fontSize="large" />
         </IconButton>
 
-        <Card sx={{ display: "flex" }}>
+        <Card
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+          }}
+        >
           <CardMedia
             component="img"
             sx={{ maxWidth: 452 }}
@@ -165,7 +170,16 @@ const ProductDetails = () => {
               </div>
             </div>
 
-            <Stack spacing={1} direction="row" margin="0 auto">
+            <Stack
+              direction="row"
+              sx={{
+                margin: "0 auto",
+                marginBottom: { xs: "24px", md: "0" },
+                flexWrap: "wrap",
+                justifyContent: "center",
+                gap: "12px",
+              }}
+            >
               <Button
                 variant="contained"
                 size="large"

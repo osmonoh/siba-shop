@@ -56,7 +56,7 @@ const Favourites = () => {
           Like products in the shop to save them to your favourites.
         </Typography> */}
         <Button variant="contained" color="secondary" size="large">
-          <Link to="/">Back to shop</Link>
+          <Link to="/category/all">Back to shop</Link>
         </Button>
       </div>
     );
@@ -75,7 +75,13 @@ const Favourites = () => {
         </Typography>
 
         {inFav.length ? (
-          <Grid container spacing={4}>
+          <Grid
+            container
+            sx={{
+              justifyContent: "center",
+              gap: "24px",
+            }}
+          >
             {renderFavItems()}
           </Grid>
         ) : (

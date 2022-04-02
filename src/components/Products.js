@@ -98,11 +98,25 @@ const Products = () => {
   return (
     <div className="products">
       <Container maxWidth="lg">
-        <Stack spacing={1} direction="row" sx={{ margin: "0 0 30px 0" }}>
+        <Stack
+          // spacing={1}
+          direction="row"
+          sx={{
+            margin: "0 0 30px 0",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
           {renderButtons()}
         </Stack>
 
-        <Grid container spacing={4}>
+        <Grid
+          container
+          sx={{
+            justifyContent: "center",
+            gap: "24px",
+          }}
+        >
           {renderCards()}
         </Grid>
       </Container>
