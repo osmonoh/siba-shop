@@ -12,15 +12,30 @@ import {
   Container,
   Button,
   IconButton,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import { grey, purple, indigo, blue } from "@mui/material/colors";
 import { FavoriteOutlined, ShoppingBasket } from "@mui/icons-material";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const Navbar = () => {
   const { inCart } = useContext(MyContext);
   const { inFav } = useContext(MyContext);
   const { setProductsType } = useContext(MyContext);
   const [categories, setCategories] = useState([]);
+
+  // MUI
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+  // ------------------
 
   const getCategories = async () => {
     const result = await mova.get("./categories");
@@ -47,7 +62,9 @@ const Navbar = () => {
               setProductsType({ category: categoryId });
             }}
           >
-            <Button sx={{ color: "white" }}>{displayName}</Button>
+            <Button sx={{ color: { xs: "text.secondary", sm: "white" } }}>
+              {displayName}
+            </Button>
           </Link>
         );
     });
@@ -71,10 +88,11 @@ const Navbar = () => {
           </Typography>
         </Link>
 
+        {/* MOJE */}
         <Box
           sx={{
             flexGrow: 1,
-            display: "flex",
+            display: { xs: "none", sm: "flex" },
             justifyContent: "center",
             alignItems: "center",
             // gap: "24px",
@@ -97,8 +115,9 @@ const Navbar = () => {
           </Link>
           {renderCategories()}
         </Box>
+        {/* ------------- */}
 
-        <Box>
+        <Box sx={{ flexGrow: { xs: 1, sm: 0 }, textAlign: "center" }}>
           <Link to="/favourites">
             <IconButton
               size="large"
@@ -128,6 +147,60 @@ const Navbar = () => {
             </IconButton>
           </Link>
         </Box>
+
+        {/* MUI */}
+        <Box
+          sx={{
+            // flexGrow: 1,
+            display: { xs: "flex", sm: "none" },
+            justifyContent: "center",
+          }}
+        >
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleOpenNavMenu}
+            color="inherit"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorElNav}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+            sx={{
+              display: { xs: "block", sm: "none" },
+            }}
+          >
+            <Link
+              to={"/category/all"}
+              key={"all"}
+              onClick={() => {
+                sessionStorage.setItem(
+                  "productsType",
+                  JSON.stringify({ category: "all" })
+                );
+                setProductsType({ category: "all" });
+              }}
+            >
+              <Button sx={{ color: "text.secondary" }}>all</Button>
+            </Link>
+            {renderCategories()}
+          </Menu>
+        </Box>
+        {/* --------------- */}
       </Toolbar>
       {/* </Container> */}
     </AppBar>
